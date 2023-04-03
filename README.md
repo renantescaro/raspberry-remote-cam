@@ -10,5 +10,5 @@ pip install -r requirements.txt
 2 - Executar
 ```bash
 source venv/bin/activate
-flask --debug run
+flask --debug run --host=0.0.0.0
 ```

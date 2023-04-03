@@ -14,31 +14,32 @@
         <button id="btnRight">Right</button>
     </div>
     <script>
+        var ipServer = '' //'http://192.168.0.74:5000'
         var vertical = 0
         var horizontal = 0
 
         var btnUp = document.getElementById('btnUp')
         btnUp.onclick = function(){
             vertical += 10
-            request('/cam/up/'+vertical)
+            request(ipServer+'/cam/vertical/'+vertical)
         }
 
         var btnDown = document.getElementById('btnDown')
         btnDown.onclick = function(){
             vertical -= 10
-            request('/cam/down/'+vertical)
+            request(ipServer+'/cam/vertical/'+vertical)
         }
 
         var btnLeft = document.getElementById('btnLeft')
         btnLeft.onclick = function(){
             horizontal += 10
-            request('/cam/left/'+horizontal)
+            request(ipServer+'/cam/horizontal/'+horizontal)
         }
 
         var btnRight = document.getElementById('btnRight')
         btnRight.onclick = function(){
             horizontal -= 10
-            request('/cam/right/'+horizontal)
+            request(ipServer+'/cam/horizontal/'+horizontal)
         }
 
         function request(endpoint){
