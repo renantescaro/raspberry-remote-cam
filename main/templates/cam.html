@@ -14,15 +14,34 @@
         <button id="btnRight">Right</button>
     </div>
     <script>
-        var btnUp = document.getElementById('btnUp')
-        var btnDown = document.getElementById('btnDown')
-        var btnLeft = document.getElementById('btnLeft')
-        var btnRight = document.getElementById('btnRight')
+        var up = 0
+        var down = 0
+        var left = 0
+        var right = 0
 
-        btnUp.onclick = function(){request('/cam/up')}
-        btnDown.onclick = function(){request('/cam/down')}
-        btnLeft.onclick = function(){request('/cam/left')}
-        btnRight.onclick = function(){request('/cam/right')}
+        var btnUp = document.getElementById('btnUp')
+        btnUp.onclick = function(){
+            up += 10
+            request('/cam/up/'+up)
+        }
+
+        var btnDown = document.getElementById('btnDown')
+        btnDown.onclick = function(){
+            down += 10
+            request('/cam/down/'+down)
+        }
+
+        var btnLeft = document.getElementById('btnLeft')
+        btnLeft.onclick = function(){
+            left += 10
+            request('/cam/left/'+left)
+        }
+
+        var btnRight = document.getElementById('btnRight')
+        btnRight.onclick = function(){
+            right += 10
+            request('/cam/right/'+right)
+        }
 
         function request(endpoint){
             var get = new XMLHttpRequest()

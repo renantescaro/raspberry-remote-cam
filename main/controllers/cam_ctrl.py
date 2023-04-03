@@ -8,22 +8,26 @@ bp = Blueprint(
 )
 
 class MainCtrl:
-    @bp.route('/cam/up', methods=['GET'])
-    def up_route():
-        Camera().mover_vertical(10)
+    @staticmethod
+    @bp.route('/cam/up/<angle>', methods=['GET'])
+    def up_route(angle):
+        Camera().mover_vertical(float(angle))
         return ''
 
-    @bp.route('/cam/down', methods=['GET'])
-    def down_route():
-        Camera().mover_vertical(-10)
+    @staticmethod
+    @bp.route('/cam/down/<angle>', methods=['GET'])
+    def down_route(angle):
+        Camera().mover_vertical(-float(angle))
         return ''
 
-    @bp.route('/cam/left', methods=['GET'])
-    def left_route():
-        Camera().mover_horizontal(10)
+    @staticmethod
+    @bp.route('/cam/left/<angle>', methods=['GET'])
+    def left_route(angle):
+        Camera().mover_horizontal(float(angle))
         return ''
 
-    @bp.route('/cam/right', methods=['GET'])
-    def right_route():
-        Camera().mover_horizontal(-10)
+    @staticmethod
+    @bp.route('/cam/right/<angle>', methods=['GET'])
+    def right_route(angle):
+        Camera().mover_horizontal(-float(angle))
         return ''
