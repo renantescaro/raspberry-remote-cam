@@ -14,33 +14,31 @@
         <button id="btnRight">Right</button>
     </div>
     <script>
-        var up = 0
-        var down = 0
-        var left = 0
-        var right = 0
+        var vertical = 0
+        var horizontal = 0
 
         var btnUp = document.getElementById('btnUp')
         btnUp.onclick = function(){
-            up += 10
-            request('/cam/up/'+up)
+            vertical += 10
+            request('/cam/up/'+vertical)
         }
 
         var btnDown = document.getElementById('btnDown')
         btnDown.onclick = function(){
-            down += 10
-            request('/cam/down/'+down)
+            vertical -= 10
+            request('/cam/down/'+vertical)
         }
 
         var btnLeft = document.getElementById('btnLeft')
         btnLeft.onclick = function(){
-            left += 10
-            request('/cam/left/'+left)
+            horizontal += 10
+            request('/cam/left/'+horizontal)
         }
 
         var btnRight = document.getElementById('btnRight')
         btnRight.onclick = function(){
-            right += 10
-            request('/cam/right/'+right)
+            horizontal -= 10
+            request('/cam/right/'+horizontal)
         }
 
         function request(endpoint){
