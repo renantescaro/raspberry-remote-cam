@@ -1,4 +1,4 @@
-from services.cam import Camera
+from main.services.cam import Camera
 
 cam = Camera()
 

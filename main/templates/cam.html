@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+</head>
+<body>
+    <div>
+        <button id="btnUp">Up</button>
+        <button id="btnDown">Down</button>
+        <button id="btnLeft">Left</button>
+        <button id="btnRight">Right</button>
+    </div>
+    <script>
+        var btnUp = document.getElementById('btnUp')
+        var btnDown = document.getElementById('btnDown')
+        var btnLeft = document.getElementById('btnLeft')
+        var btnRight = document.getElementById('btnRight')
+
+        btnUp.onclick = function(){request('/cam/up')}
+        btnDown.onclick = function(){request('/cam/down')}
+        btnLeft.onclick = function(){request('/cam/left')}
+        btnRight.onclick = function(){request('/cam/right')}
+
+        function request(endpoint){
+            var get = new XMLHttpRequest()
+
+            get.open('GET', endpoint, true)
+            get.send()
+            get.onreadystatechange = function(){
+                if (get.readyState == 4 && get.status == 200){
+                    console.log(get.responseText)
+                }
+            }
+        }
+    </script>
+</body>
+</html>

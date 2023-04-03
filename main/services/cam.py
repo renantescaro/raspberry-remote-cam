@@ -1,5 +1,5 @@
-from services.servo_motor import ServoMotor
-from services.setting import Setting
+from .servo_motor import ServoMotor
+from .setting import Setting
 
 class Camera:
     def __init__(self):
