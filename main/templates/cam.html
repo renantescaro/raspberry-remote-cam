@@ -7,39 +7,59 @@
     <title>{{title}}</title>
 </head>
 <body>
-    <div>
-        <button id="btnUp">Up</button>
-        <button id="btnDown">Down</button>
-        <button id="btnLeft">Left</button>
-        <button id="btnRight">Right</button>
+    <button id="btnUp" style="width: 100%; height: 100px;">Up</button>
+    <div style="display: flex;flex-wrap: nowrap;align-content: center;justify-content: center;">
+        <button id="btnLeft" style="width: 100px;">Left</button>
+        <img src="" alt="" id="imgCam">
+        <button id="btnRight" style="width: 100px;">Right</button>
     </div>
+    <button id="btnDown" style="width: 100%; height: 100px;">Down</button>
+
     <script>
-        var ipServer = '' //'http://192.168.0.74:5000'
+        var serverIp = '' // 'http://192.168.0.74'
+        var serverPort = '5000'
+        var camPort = '8080'
         var vertical = 0
         var horizontal = 0
+        var limit = 160
+
+        var imgCam = document.getElementById('imgCam')
+        imgCam.src = serverIp+':'+camPort+ '?action=stream'
+        imgCam.style.height = window.innerHeight-220+'px'
+
+        request(serverIp+':'+serverPort+'/cam/horizontal/'+horizontal)
+        request(serverIp+':'+serverPort+'/cam/vertical/'+vertical)
 
         var btnUp = document.getElementById('btnUp')
         btnUp.onclick = function(){
-            vertical += 10
-            request(ipServer+'/cam/vertical/'+vertical)
+            if(vertical + 10 <= limit){
+                vertical += 10
+                request(serverIp+':'+serverPort+'/cam/vertical/'+vertical)
+            }
         }
 
         var btnDown = document.getElementById('btnDown')
         btnDown.onclick = function(){
-            vertical -= 10
-            request(ipServer+'/cam/vertical/'+vertical)
+            if(vertical - 10 >= 0){
+                vertical -= 10
+                request(serverIp+':'+serverPort+'/cam/vertical/'+vertical)
+            }
         }
 
         var btnLeft = document.getElementById('btnLeft')
         btnLeft.onclick = function(){
-            horizontal += 10
-            request(ipServer+'/cam/horizontal/'+horizontal)
+            if(horizontal + 10 <= limit){
+                horizontal += 10
+                request(serverIp+':'+serverPort+'/cam/horizontal/'+horizontal)
+            }
         }
 
         var btnRight = document.getElementById('btnRight')
         btnRight.onclick = function(){
-            horizontal -= 10
-            request(ipServer+'/cam/horizontal/'+horizontal)
+            if(horizontal - 10 >= 0){
+                horizontal -= 10
+                request(serverIp+':'+serverPort+'/cam/horizontal/'+horizontal)
+            }
         }
 
         function request(endpoint){
