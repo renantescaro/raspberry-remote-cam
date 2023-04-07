@@ -1,3 +1,4 @@
 python-dotenv
 Flask==2.2.3
+flask-cors
 RPi.GPIO
