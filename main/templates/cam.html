@@ -26,6 +26,7 @@
         var imgCam = document.getElementById('imgCam')
         imgCam.src = serverIp+':'+camPort+ '?action=stream'
         imgCam.style.height = window.innerHeight-220+'px'
+        imgCam.style.transform = 'rotate(180deg)'
 
         request(serverIp+':'+serverPort+'/cam/horizontal/'+horizontal)
         request(serverIp+':'+serverPort+'/cam/vertical/'+vertical)
@@ -72,6 +73,13 @@
                     console.log(get.responseText)
                 }
             }
+        }
+
+        if(window.innerWidth < 1000){
+            btnLeft.style.width = '50px'
+            btnRight.style.width = '50px'
+
+            imgCam.style.width = window.innerWidth-100+'px'
         }
     </script>
 </body>
